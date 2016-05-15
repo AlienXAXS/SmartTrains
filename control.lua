@@ -710,7 +710,8 @@ function ontick(event)
                     end
                     keepWaiting = true
                   end
-                elseif train:isWaitingForAutoDepart() and (keepWaiting == nil or keepWaiting) then
+                end
+                if train:isWaitingForAutoDepart() and (keepWaiting == nil or keepWaiting) then
                   cargo = train:cargoCount()
                   local last = train.waiting.lastCheck
                   if train:cargoEquals(cargo, train.waiting.cargo, global.settings.depart.minFlow, event.tick - last) then
