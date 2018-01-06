@@ -925,48 +925,10 @@ on_gui_click = {
                     end
                     record.wait_conditions = record.wait_conditions or {}
                     rules[s_index] = rules[s_index] or {}
-
-                    rules[s_index].empty = nil
-                    rules[s_index].full = nil
-                    rules[s_index].circuit = nil
-                    rules[s_index].inactivity = nil
-
-                    for c_index, condition in pairs(record.wait_conditions) do
-                        if condition.type == "full" then
-                            rules[s_index].full = true
-                        end
-                        if condition.type == "empty" then
-                            rules[s_index].empty = true
-                        end
-                        if condition.type == "inactivity" then
-                            rules[s_index].inactivity = true
-                        end
-                        if condition.type == "circuit" then
-                            rules[s_index].circuit = true
-                        end
-                    end
                 end
 
                 local update_conditions = function(record, rule)
                     local new_rule = table.deepcopy(rule)
-                    new_rule.empty = nil
-                    new_rule.full = nil
-                    new_rule.circuit = nil
-                    new_rule.inactivity = nil
-                    for c_index, condition in pairs(record.wait_conditions) do
-                        if condition.type == "full" then
-                            new_rule.full = true
-                        end
-                        if condition.type == "empty" then
-                            new_rule.empty = true
-                        end
-                        if condition.type == "inactivity" then
-                            new_rule.inactivity = true
-                        end
-                        if condition.type == "circuit" then
-                            new_rule.circuit = true
-                        end
-                    end
                     new_rule.station = record.station
                     return new_rule
                 end
